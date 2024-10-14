@@ -5,6 +5,7 @@ var WhatsApp= {
     chatId: null,
     message: null,
     parse_mode: null, 
+    // Function for escaping special characters depending on the selected markup format
     escapeMarkup: function (str, mode) {
         switch (mode) {
             case 'markdown':
@@ -17,6 +18,7 @@ var WhatsApp= {
                 return str;
         }
     },
+    // Function for sending a message to WhatsApp
     sendMessage: function () {
         var params = {
             chatId: WhatsApp.chatId,
@@ -45,6 +47,7 @@ var WhatsApp= {
         catch (error) {
             response = null;
         }
+        // Check if the message was sent successfully
         if (request.Status() !== 200) {
             if (typeof response.description === 'string') {
                 throw response.description;
@@ -57,7 +60,7 @@ var WhatsApp= {
 };
 try {
     var params = JSON.parse(value);
-
+    // Check for required parameters
     if (typeof params.ApiURL === 'undefined') {
         throw 'Incorrect value is given for parameter "ApiURL": parameter is missing';
     }
@@ -81,7 +84,7 @@ try {
     if (['markdown', 'html', 'markdownv2'].indexOf(params.ParseMode) !== -1) {
         WhatsApp.parse_mode = params.ParseMode;
     }
-
+    // Checking the correctness of the chat ID
     if (params.To.includes('@c.us') || params.chatId.includes('@g.us')) {
         WhatsApp.chatId = params.chatId;
     } else {
