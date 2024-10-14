@@ -85,7 +85,7 @@ try {
         WhatsApp.parse_mode = params.ParseMode;
     }
     // Checking the correctness of the chat ID
-    if (params.To.includes('@c.us') || params.chatId.includes('@g.us')) {
+    if (params.chatId.includes('@c.us') || params.chatId.includes('@g.us')) {
         WhatsApp.chatId = params.chatId;
     } else {
         throw 'Incorrect value is given for parameter "chatId": parameter is not ended with "@c.us" or "@g.us"';
