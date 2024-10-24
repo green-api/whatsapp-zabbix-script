@@ -14,7 +14,7 @@ You can create a group on your mobile device or using the [CreateGroup](https://
 
 ## Setting up GREEN-API
 
-Detailed instructions for registration can be found [here](https://green-api.com/en/docs/before-start/). For free use, use the "Developer" tariff.
+Detailed instructions for registration can be found [here](https://green-api.com/en/docs/before-start/). For free use, use the "Developer" plam.
 
 ## Webhook Endpoint Technology
 
@@ -77,7 +77,7 @@ You should also check whether the notification was delivered to the chat (or cli
 
 ## Additionally
 
-This method allows you to set up any notifications from [Zabbix](https://www.zabbix.com/) to [WhatsApp](https://www.whatsapp.com) for free using [GREEN-API](https://green-api.com/en), within the framework of the "Developer" tariff.
+This method allows you to set up any notifications from [Zabbix](https://www.zabbix.com/) to [WhatsApp](https://www.whatsapp.com) for free using [GREEN-API](https://green-api.com/en), within the framework of the "Developer" plan.
 
 If you have any questions about our service or purchasing a paid plan, or you have noticed an error in the SDK, you can contact us in the following ways:
 
