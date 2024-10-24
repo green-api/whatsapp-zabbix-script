@@ -1,4 +1,5 @@
 var WhatsApp= {
+    // Parameters
     ApiURL: null,
     IdInstance: null,
     apiTokenInstance: null,
@@ -20,6 +21,7 @@ var WhatsApp= {
     },
     // Function for sending a message to WhatsApp
     sendMessage: function () {
+        // API request parameters
         var params = {
             chatId: WhatsApp.chatId,
             message: WhatsApp.message,
@@ -28,6 +30,7 @@ var WhatsApp= {
         data,
         response,
         request = new CurlHttpRequest(),
+        // Object for sending HTTP requests
         url = WhatsApp.ApiURL + '/waInstance' + WhatsApp.IdInstance + '/sendMessage/' + WhatsApp.apiTokenInstance;
         Zabbix.Log(4, url);
         if (WhatsApp.parse_mode !== null) {
@@ -41,6 +44,7 @@ var WhatsApp= {
         Zabbix.Log(4, '[WhatsApp Webhook] params: ' + data);
         response = request.Post(url, data);
         Zabbix.Log(4, '[WhatsApp Webhook] HTTP code: ' + request.Status());
+        // Parses the API response into a JSON object
         try {
             response = JSON.parse(response);
         }
@@ -58,7 +62,9 @@ var WhatsApp= {
         }
     }
 };
+// Processes input parameters
 try {
+    // Parses a JSON string with input parameters
     var params = JSON.parse(value);
     // Check for required parameters
     if (typeof params.ApiURL === 'undefined') {
@@ -90,19 +96,24 @@ try {
     } else {
         throw 'Incorrect value is given for parameter "chatId": parameter is not ended with "@c.us" or "@g.us"';
     }
-    
+    // Initializes the message
     WhatsApp.message = '';
+    // Adds a topic if one is set
     if (params.Subject.length > 0) {
         WhatsApp.message += (params.Subject + '\n');
     }
+    // Adds a message
     WhatsApp.message += params.Message;
     if (['markdown', 'html', 'markdownv2'].indexOf(params.ParseMode) !== -1) {
         WhatsApp.message = WhatsApp.escapeMarkup(WhatsApp.message, params.ParseMode);
     }
+    // Sends a message to WhatsApp
     WhatsApp.sendMessage();
+    // Returns OK if sending was successful
     return 'OK';
 }
 catch (error) {
     Zabbix.Log(4, '[WhatsApp Webhook] notification failed: ' + error);
+    // Shows error with error message
     throw 'Sending failed: ' + error + '.';
 }
