@@ -1,6 +1,6 @@
 # whatsapp-zabbix-script
 
-- [English version of the documentation](https://github.com/green-api/whatsapp-zabbix-script/blob/master/README.md)[WhatsApp].
+- [English version of the documentation](https://github.com/green-api/whatsapp-zabbix-script/blob/master/README.md).
 
 whatsapp-zabbix-script - скрипт для интеграции уведомлений из [Zabbix](https://www.zabbix.com/) в [WhatsApp](https://www.whatsapp.com) с помощью [GREEN-API](https://green-api.com/). Более подробную инструкцию можно найти в [нашем блоге](https://green-api.com/en/blog/2024/zabbix_notifications_in_whatsapp_for_free/).
 
